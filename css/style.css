@@ -34,11 +34,11 @@ h1, h2, h3 {
   --color-accent-hover: #0434ff;
   --border-subtle: rgba(255, 255, 255, 0.08);
 
-  --color-cat-broadcast: #00dffc;
-  --color-cat-hardware: #ffc107;
-  --color-cat-stats: #00c9a7;
-  --color-cat-media: #6e1ac9;
-  --color-cat-personal: #de4437;
+  --color-cat-broadcast: var(--color-accent);
+  --color-cat-hardware: var(--color-accent);
+  --color-cat-stats: var(--color-accent);
+  --color-cat-media: var(--color-accent);
+  --color-cat-personal: var(--color-accent);
 
   --font-heading: 'Montserrat', Helvetica, sans-serif;
   --font-body: 'Roboto', Helvetica, sans-serif;
