@@ -1,18 +1,26 @@
 (function () {
   var toggle = document.getElementById('navToggle');
+  var sidebar = document.getElementById('sidebar');
+  var overlay = document.getElementById('sidebarOverlay');
   var nav = document.getElementById('primary-nav');
 
-  if (toggle && nav) {
+  function closeSidebar() {
+    sidebar.classList.remove('is-open');
+    overlay.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+
+  if (toggle && sidebar && overlay) {
     toggle.addEventListener('click', function () {
-      var isOpen = nav.classList.toggle('is-open');
+      var isOpen = sidebar.classList.toggle('is-open');
+      overlay.classList.toggle('is-open', isOpen);
       toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
+    overlay.addEventListener('click', closeSidebar);
+
     nav.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        nav.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
+      link.addEventListener('click', closeSidebar);
     });
   }
 

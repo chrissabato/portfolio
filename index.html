@@ -61,26 +61,41 @@
   </symbol>
 </svg>
 
-<header class="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__logo" href="#top">
-      <img src="assets/logo.svg" alt="" class="site-header__mark" width="28" height="28">
-      Chris Sabato
-    </a>
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primary-nav">
-      <svg class="icon icon-open" aria-hidden="true"><use href="#icon-menu"/></svg>
-      <svg class="icon icon-close" aria-hidden="true"><use href="#icon-close"/></svg>
-      <span class="visually-hidden">Menu</span>
-    </button>
-    <nav id="primary-nav" class="primary-nav" aria-label="Categories">
-      <a href="#broadcast-streaming">Broadcast &amp; Streaming</a>
-      <a href="#hardware-control">Hardware &amp; Device Control</a>
-      <a href="#stats-data">Stats &amp; Data</a>
-      <a href="#media-web">Media &amp; Web</a>
-      <a href="#personal-projects">Personal Projects</a>
-    </nav>
-  </div>
+<div class="mobile-bar">
+  <a class="mobile-bar__logo" href="#top">
+    <img src="assets/logo.svg" alt="" width="26" height="26">
+    Chris Sabato
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primary-nav">
+    <svg class="icon icon-open" aria-hidden="true"><use href="#icon-menu"/></svg>
+    <svg class="icon icon-close" aria-hidden="true"><use href="#icon-close"/></svg>
+    <span class="visually-hidden">Menu</span>
+  </button>
+</div>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<header class="sidebar" id="sidebar">
+  <a class="sidebar__logo" href="#top">
+    <img src="assets/logo.svg" alt="" width="40" height="40">
+    <span>Chris Sabato</span>
+  </a>
+  <span class="sidebar__divider" aria-hidden="true"></span>
+  <nav id="primary-nav" class="primary-nav" aria-label="Categories">
+    <a href="#broadcast-streaming">Broadcast &amp; Streaming</a>
+    <a href="#hardware-control">Hardware &amp; Device Control</a>
+    <a href="#stats-data">Stats &amp; Data</a>
+    <a href="#media-web">Media &amp; Web</a>
+    <a href="#personal-projects">Personal Projects</a>
+  </nav>
+  <span class="sidebar__divider" aria-hidden="true"></span>
+  <nav class="sidebar__footer-links" aria-label="External">
+    <a href="https://chrissabato.com" target="_blank" rel="noopener">chrissabato.com</a>
+    <a href="https://github.com/chrissabato" target="_blank" rel="noopener">GitHub</a>
+  </nav>
 </header>
+
+<div class="page">
 
 <section class="hero" id="top">
   <img src="assets/logo.svg" alt="" class="hero__watermark" aria-hidden="true">
@@ -504,15 +519,12 @@
 
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <p class="site-footer__name">Chris Sabato</p>
-    <nav class="site-footer__links" aria-label="Footer">
-      <a href="https://chrissabato.com" target="_blank" rel="noopener">chrissabato.com</a>
-      <a href="https://github.com/chrissabato" target="_blank" rel="noopener">GitHub</a>
-      <a href="#top">Back to top</a>
-    </nav>
+    <a href="#top">Back to top</a>
     <p class="site-footer__copyright">&copy; <span id="year"></span> Chris Sabato</p>
   </div>
 </footer>
+
+</div>
 
 <script src="js/main.js" defer></script>
 </body>
