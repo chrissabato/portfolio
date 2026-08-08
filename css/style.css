@@ -7,7 +7,7 @@ html { scroll-padding-top: var(--header-height); }
 body {
   margin: 0;
   background: var(--color-bg);
-  color: var(--color-white);
+  color: var(--color-ink);
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.6;
@@ -25,14 +25,19 @@ h1, h2, h3 {
 
 /* ---------- Custom properties ---------- */
 :root {
-  --color-bg: #080914;
-  --color-surface: #12141a;
+  /* chrissabato.com is a light site: white content pages, a dark
+     sidebar/footer, and a saturated blue hero/photo treatment. */
+  --color-bg: #fff;
+  --color-surface: #f5f7f9;
   --color-header: #151719;
   --color-white: #fff;
-  --color-text-muted: #b7bac4;
+  --color-ink: #16181f;
+  --color-text-muted: #5b5f6d;
+  --color-muted-on-dark: #b7bac4;
   --color-accent: #375dff;
   --color-accent-hover: #0434ff;
-  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(15, 20, 30, 0.1);
+  --border-subtle-on-dark: rgba(255, 255, 255, 0.14);
 
   --color-cat-broadcast: var(--color-accent);
   --color-cat-hardware: var(--color-accent);
@@ -96,7 +101,7 @@ h1, h2, h3 {
   z-index: 200;
   width: var(--sidebar-width);
   background: var(--color-header);
-  border-right: 1px solid var(--border-subtle);
+  border-right: 1px solid var(--border-subtle-on-dark);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -136,7 +141,7 @@ h1, h2, h3 {
 }
 .primary-nav a {
   text-decoration: none;
-  color: var(--color-text-muted);
+  color: var(--color-muted-on-dark);
   font-family: var(--font-heading);
   font-size: 0.95rem;
   font-weight: 600;
@@ -160,7 +165,7 @@ h1, h2, h3 {
   gap: 0.6rem;
 }
 .sidebar__footer-links a {
-  color: var(--color-text-muted);
+  color: var(--color-muted-on-dark);
   font-size: 0.85rem;
   text-decoration: none;
 }
@@ -176,7 +181,7 @@ h1, h2, h3 {
   z-index: 210;
   height: var(--header-height);
   background: var(--color-header);
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle-on-dark);
   padding: 0 1.25rem;
   align-items: center;
   justify-content: space-between;
@@ -194,7 +199,7 @@ h1, h2, h3 {
 
 .nav-toggle {
   background: none;
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--border-subtle-on-dark);
   border-radius: 8px;
   color: var(--color-white);
   width: 40px;
@@ -224,12 +229,19 @@ h1, h2, h3 {
 @media (max-width: 900px) {
   .mobile-bar { display: flex; }
   .sidebar {
+    top: var(--header-height);
+    padding-top: 1.75rem;
     transform: translateX(-100%);
     transition: transform 0.25s ease;
   }
   .sidebar.is-open {
     transform: translateX(0);
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+  }
+  /* The mobile bar already shows the logo; skip repeating it in the drawer. */
+  .sidebar__logo,
+  .sidebar__divider--top {
+    display: none;
   }
   .sidebar-overlay { display: block; }
   .sidebar-overlay.is-open {
@@ -253,9 +265,10 @@ h1, h2, h3 {
   overflow: hidden;
   padding: 5.5rem 1.5rem 4rem;
   text-align: center;
+  color: var(--color-white);
   background:
-    radial-gradient(circle at 18% 15%, rgba(255, 255, 255, 0.1), transparent 45%),
-    linear-gradient(160deg, #1c3fd6 0%, #16209e 45%, var(--color-bg) 100%);
+    radial-gradient(circle at 18% 15%, rgba(255, 255, 255, 0.12), transparent 45%),
+    linear-gradient(160deg, #1c3fd6 0%, #16209e 55%, #0d1442 100%);
 }
 .hero__watermark {
   position: absolute;
@@ -355,11 +368,11 @@ main {
 @media (prefers-reduced-motion: no-preference) {
   .tool-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 12px 28px rgba(15, 20, 30, 0.12);
   }
 }
 .tool-card:hover {
-  border-color: var(--border-subtle);
+  border-color: var(--card-accent, var(--color-accent));
 }
 
 .tool-card--broadcast { --card-accent: var(--color-cat-broadcast); }
@@ -382,12 +395,12 @@ main {
 }
 .tool-card__badge {
   font-size: 0.72rem;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--color-white);
-  background: color-mix(in srgb, var(--card-accent, var(--color-accent)) 28%, transparent);
-  border: 1px solid color-mix(in srgb, var(--card-accent, var(--color-accent)) 55%, transparent);
+  color: var(--card-accent, var(--color-accent));
+  background: color-mix(in srgb, var(--card-accent, var(--color-accent)) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-accent, var(--color-accent)) 30%, transparent);
   padding: 0.2rem 0.55rem;
   border-radius: 999px;
 }
@@ -444,8 +457,8 @@ main {
 
 .btn--secondary {
   background: transparent;
-  color: var(--color-white);
-  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--color-ink);
+  border-color: rgba(15, 20, 30, 0.18);
 }
 .btn--secondary:hover {
   border-color: var(--color-accent);
@@ -478,12 +491,12 @@ main {
 }
 .site-footer__inner a {
   text-decoration: none;
-  color: var(--color-text-muted);
+  color: var(--color-muted-on-dark);
   font-size: 0.9rem;
 }
-.site-footer__inner a:hover { color: var(--color-accent); }
+.site-footer__inner a:hover { color: var(--color-white); }
 .site-footer__copyright {
-  color: var(--color-text-muted);
+  color: var(--color-muted-on-dark);
   font-size: 0.85rem;
   margin: 0;
 }
