@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tools by Chris Sabato</title>
+<meta name="description" content="A portfolio of software tools built by Chris Sabato for sports broadcast production, hardware control, stats processing, and a few personal projects.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-broadcast" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/>
+    <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.4"/>
+    <circle cx="12" cy="12" r="2"/>
+    <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.4"/>
+    <path d="M19.1 4.9c3.9 3.9 3.9 10.2 0 14.2"/>
+  </symbol>
+  <symbol id="icon-hardware" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="4" width="16" height="16" rx="2"/>
+    <rect x="9" y="9" width="6" height="6"/>
+    <path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/>
+  </symbol>
+  <symbol id="icon-stats" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="4" y1="20" x2="20" y2="20"/>
+    <rect x="6" y="12" width="3" height="8"/>
+    <rect x="11" y="7" width="3" height="13"/>
+    <rect x="16" y="4" width="3" height="16"/>
+  </symbol>
+  <symbol id="icon-media" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="14" rx="2"/>
+    <circle cx="9" cy="11" r="2.5"/>
+    <path d="M14.5 15.5 17 12l4 6"/>
+  </symbol>
+  <symbol id="icon-personal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 11.5 12 4l9 7.5"/>
+    <path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/>
+  </symbol>
+  <symbol id="icon-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+    <path d="M15 3h6v6"/>
+    <path d="M10 14 21 3"/>
+  </symbol>
+  <symbol id="icon-github" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 .5C5.7.5.5 5.7.5 12c0 5 3.3 9.3 7.8 10.8.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5Z"/>
+  </symbol>
+  <symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="6" x2="21" y2="6"/>
+    <line x1="3" y1="12" x2="21" y2="12"/>
+    <line x1="3" y1="18" x2="21" y2="18"/>
+  </symbol>
+  <symbol id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="6" y1="6" x2="18" y2="18"/>
+    <line x1="18" y1="6" x2="6" y2="18"/>
+  </symbol>
+</svg>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="#top">Chris Sabato</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primary-nav">
+      <svg class="icon icon-open" aria-hidden="true"><use href="#icon-menu"/></svg>
+      <svg class="icon icon-close" aria-hidden="true"><use href="#icon-close"/></svg>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav id="primary-nav" class="primary-nav" aria-label="Categories">
+      <a href="#broadcast-streaming">Broadcast &amp; Streaming</a>
+      <a href="#hardware-control">Hardware &amp; Device Control</a>
+      <a href="#stats-data">Stats &amp; Data</a>
+      <a href="#media-web">Media &amp; Web</a>
+      <a href="#personal-projects">Personal Projects</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <p class="hero__eyebrow">Portfolio</p>
+  <h1>Tools built by Chris Sabato</h1>
+  <p class="hero__tagline">Software for sports broadcast production &mdash; and a few things built just for fun.</p>
+</section>
+
+<main id="main">
+
+  <section id="broadcast-streaming" aria-labelledby="broadcast-streaming-heading" class="category-section">
+    <div class="category-header">
+      <svg class="category-header__icon icon--broadcast" aria-hidden="true"><use href="#icon-broadcast"/></svg>
+      <div>
+        <h2 id="broadcast-streaming-heading">Broadcast &amp; Streaming</h2>
+        <p class="category-header__desc">Stream management, clipping, and playback tools for live sports production.</p>
+      </div>
+    </div>
+    <div class="tool-grid">
+
+      <article class="tool-card tool-card--broadcast">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-broadcast"/></svg>
+          <span class="tool-card__badge">Broadcast &amp; Streaming</span>
+        </div>
+        <h3 class="tool-card__title">Tennis SRT Scorebug Gateway</h3>
+        <p class="tool-card__desc">Manages simultaneous SRT video restreams for tennis tournaments with up to 6 court cameras. Built with FFmpeg and NVIDIA NVENC hardware encoding, featuring a web interface, per-court status, FFmpeg logs, and Google Chat webhook notifications.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/Tennis-SRT-Scorebug-Gateway" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; Tennis SRT Scorebug Gateway (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="tool-card tool-card--broadcast">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-broadcast"/></svg>
+          <span class="tool-card__badge">Broadcast &amp; Streaming</span>
+        </div>
+        <h3 class="tool-card__title">AIDA SRT Controller</h3>
+        <p class="tool-card__desc">PHP dashboard for managing SRT video streams from AIDA cameras, with per-camera streaming control, real-time status polling, and customizable camera configuration.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/aida-srt" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; AIDA SRT Controller (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="tool-card tool-card--broadcast">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-broadcast"/></svg>
+          <span class="tool-card__badge">Broadcast &amp; Streaming</span>
+        </div>
+        <h3 class="tool-card__title">LiveCut</h3>
+        <p class="tool-card__desc">Browser-based HLS highlight clipper that needs no server uploads or software install, powered by FFmpeg.wasm. Keyboard shortcuts (I/O keys), a clip queue, frame-accurate adjustment, and stream-copy export.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--primary" href="https://livecut.chrissabato.com/" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-external"/></svg> Live Site
+            <span class="visually-hidden"> &ndash; LiveCut (opens in new tab)</span>
+          </a>
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/livecut" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; LiveCut (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="tool-card tool-card--broadcast">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-broadcast"/></svg>
+          <span class="tool-card__badge">Broadcast &amp; Streaming</span>
+        </div>
+        <h3 class="tool-card__title">HLS Official Review</h3>
+        <p class="tool-card__desc">Browser-based HLS video player built for official review, with frame-accurate playback controls and support for .m3u8 stream URLs.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--primary" href="https://officialreview.chrissabato.com" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-external"/></svg> Live Site
+            <span class="visually-hidden"> &ndash; HLS Official Review (opens in new tab)</span>
+          </a>
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/hls-official-review" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; HLS Official Review (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="tool-card tool-card--broadcast">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-broadcast"/></svg>
+          <span class="tool-card__badge">Broadcast &amp; Streaming</span>
+        </div>
+        <h3 class="tool-card__title">Livestream Multiview</h3>
+        <p class="tool-card__desc">Browser-based dashboard for viewing multiple live streams simultaneously, built for keeping an eye on several feeds at once during a broadcast.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--primary" href="https://mv.chrissabato.com" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-external"/></svg> Live Site
+            <span class="visually-hidden"> &ndash; Livestream Multiview (opens in new tab)</span>
+          </a>
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/livestream-multiview" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; Livestream Multiview (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="tool-card tool-card--broadcast">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-broadcast"/></svg>
+          <span class="tool-card__badge">Broadcast &amp; Streaming</span>
+        </div>
+        <h3 class="tool-card__title">vMix Ad Manager</h3>
+        <p class="tool-card__desc">Web app for managing and scheduling video ads in vMix, with ad library configuration and weighted playlist generation by duration. Network-accessible for multi-operator use.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/vmix-ad-manager" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; vMix Ad Manager (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="tool-card tool-card--broadcast">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-broadcast"/></svg>
+          <span class="tool-card__badge">Broadcast &amp; Streaming</span>
+        </div>
+        <h3 class="tool-card__title">vMix Playlist</h3>
+        <p class="tool-card__desc">Electron desktop app for building and managing vMix playlists &mdash; a native counterpart to the browser-based vMix Ad Manager, focused on general playlist control rather than ad scheduling.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/vmix-playlist" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; vMix Playlist (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="tool-card tool-card--broadcast">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-broadcast"/></svg>
+          <span class="tool-card__badge">Broadcast &amp; Streaming</span>
+        </div>
+        <h3 class="tool-card__title">vMix Replay</h3>
+        <p class="tool-card__desc">Browser-based replay tagging app for vMix, built with HTML, JavaScript, and Bootstrap. Ships with sport-specific configurable button presets for basketball, lacrosse, and a general default.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/vmix-replay" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; vMix Replay (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="tool-card tool-card--broadcast">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-broadcast"/></svg>
+          <span class="tool-card__badge">Broadcast &amp; Streaming</span>
+        </div>
+        <h3 class="tool-card__title">Rematrix Filter</h3>
+        <p class="tool-card__desc">OBS Studio audio filter plugin providing a full gain matrix &mdash; mix any input channel into any output channel at its own dB gain. Useful for muting comms feeds, downmixing, or rerouting channels. Originally created by Andersama; updated and maintained for OBS Studio 32.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/rematrix-filter" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; Rematrix Filter (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="hardware-control" aria-labelledby="hardware-control-heading" class="category-section">
+    <div class="category-header">
+      <svg class="category-header__icon icon--hardware" aria-hidden="true"><use href="#icon-hardware"/></svg>
+      <div>
+        <h2 id="hardware-control-heading">Hardware &amp; Device Control</h2>
+        <p class="category-header__desc">Interfaces and firmware for cameras, mixers, scoreboards, and other production hardware.</p>
+      </div>
+    </div>
+    <div class="tool-grid">
+
+      <article class="tool-card tool-card--hardware">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-hardware"/></svg>
+          <span class="tool-card__badge">Hardware &amp; Device Control</span>
+        </div>
+        <h3 class="tool-card__title">Bolin PTZ Preset Controller</h3>
+        <p class="tool-card__desc">Web-based controller for a Bolin EXU-230NX PTZ camera: pan/tilt/zoom/focus controls, 16 customizable presets with thumbnails, drag-and-drop reordering, SRT toggling, and a preset-only view mode.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/bolin-control" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; Bolin PTZ Preset Controller (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="tool-card tool-card--hardware">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-hardware"/></svg>
+          <span class="tool-card__badge">Hardware &amp; Device Control</span>
+        </div>
+        <h3 class="tool-card__title">NDI Audio Interface Converter</h3>
+        <p class="tool-card__desc">Electron GUI that connects a Behringer XR18 mixer and a Dante Virtual Soundcard over NDI, enabling full-duplex comms over a standard network.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/ndi-comms-router" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; NDI Audio Interface Converter (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="tool-card tool-card--hardware">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-hardware"/></svg>
+          <span class="tool-card__badge">Hardware &amp; Device Control</span>
+        </div>
+        <h3 class="tool-card__title">Dakbot</h3>
+        <p class="tool-card__desc">MicroPython firmware for an ESP32-S3-ETH board that reads live scoreboard data from a Daktronics AllSport 5000 controller and serves it as JSON over Ethernet. Monitors RTD serial packets at 19200 baud and supports baseball, basketball, volleyball, football, and hockey/lacrosse.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/dakbot" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; Dakbot (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="tool-card tool-card--hardware">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-hardware"/></svg>
+          <span class="tool-card__badge">Hardware &amp; Device Control</span>
+        </div>
+        <h3 class="tool-card__title">Audio Meter</h3>
+        <p class="tool-card__desc">Browser-based LUFS audio level meter for microphone monitoring, implementing ITU-R BS.1770-4 K-weighting. Features a 3-second integrated loudness window, 30-second history graph, color-coded display, and device selection.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--primary" href="https://chrissabato.github.io/audiometer/" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-external"/></svg> Live Site
+            <span class="visually-hidden"> &ndash; Audio Meter (opens in new tab)</span>
+          </a>
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/audiometer" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; Audio Meter (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="tool-card tool-card--hardware">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-hardware"/></svg>
+          <span class="tool-card__badge">Hardware &amp; Device Control</span>
+        </div>
+        <h3 class="tool-card__title">Lynx Node Scoreboard</h3>
+        <p class="tool-card__desc">Node.js web scoreboard for FinishLynx race timing systems. Receives live timing data over UDP and pushes results to connected clients, with a LAN version over Socket.io and a WAN version via Pusher for internet-accessible deployments.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/lynx-node-scoreboard" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; Lynx Node Scoreboard (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="stats-data" aria-labelledby="stats-data-heading" class="category-section">
+    <div class="category-header">
+      <svg class="category-header__icon icon--stats" aria-hidden="true"><use href="#icon-stats"/></svg>
+      <div>
+        <h2 id="stats-data-heading">Stats &amp; Data Tools</h2>
+        <p class="category-header__desc">Parsing, fixing, and routing stats feeds between the systems that need them.</p>
+      </div>
+    </div>
+    <div class="tool-grid">
+
+      <article class="tool-card tool-card--stats">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-stats"/></svg>
+          <span class="tool-card__badge">Stats &amp; Data</span>
+        </div>
+        <h3 class="tool-card__title">Broadcast Stats Parser</h3>
+        <p class="tool-card__desc">Parses live stats XMLs and generates data feeds for broadcast graphics systems.</p>
+        <p class="tool-card__note">Internal tool &mdash; no public link</p>
+      </article>
+
+      <article class="tool-card tool-card--stats">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-stats"/></svg>
+          <span class="tool-card__badge">Stats &amp; Data</span>
+        </div>
+        <h3 class="tool-card__title">NCAA Stats XML Fixer</h3>
+        <p class="tool-card__desc">Corrects team codes in NCAA game XML files, getting broadcast graphics systems working with stats feeds that have mismatched or missing team codes.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--primary" href="https://rpi.chrissabato.com/" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-external"/></svg> Live Site
+            <span class="visually-hidden"> &ndash; NCAA Stats XML Fixer (opens in new tab)</span>
+          </a>
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/ncaa-rpi-xml" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; NCAA Stats XML Fixer (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="tool-card tool-card--stats">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-stats"/></svg>
+          <span class="tool-card__badge">Stats &amp; Data</span>
+        </div>
+        <h3 class="tool-card__title">XML 2 vMix</h3>
+        <p class="tool-card__desc">PowerShell script for stat file monitoring, watching StatCrew, NCAA LiveStats, or Presto Stats input and outputting JSON files for vMix datasource ingestion.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/xml2vmix" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; XML 2 vMix (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="tool-card tool-card--stats">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-stats"/></svg>
+          <span class="tool-card__badge">Stats &amp; Data</span>
+        </div>
+        <h3 class="tool-card__title">InDesign XML</h3>
+        <p class="tool-card__desc">XSLT stylesheets that transform StatCrew basketball stats XML for use directly in Adobe InDesign print and publishing layouts.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/indesignxml" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; InDesign XML (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="media-web" aria-labelledby="media-web-heading" class="category-section">
+    <div class="category-header">
+      <svg class="category-header__icon icon--media" aria-hidden="true"><use href="#icon-media"/></svg>
+      <div>
+        <h2 id="media-web-heading">Media &amp; Web Tools</h2>
+        <p class="category-header__desc">Audio, photo, and web platforms for sports organizations.</p>
+      </div>
+    </div>
+    <div class="tool-grid">
+
+      <article class="tool-card tool-card--media">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-media"/></svg>
+          <span class="tool-card__badge">Media &amp; Web</span>
+        </div>
+        <h3 class="tool-card__title">Stadium Sound</h3>
+        <p class="tool-card__desc">Soundboard app for game-day audio operators, with sound effect and music banks, keyboard shortcuts, crossfades, private preview, and fullscreen mode. Available for Windows and Mac.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--primary" href="https://stadiumsound.chrissabato.com" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-external"/></svg> Live Site
+            <span class="visually-hidden"> &ndash; Stadium Sound (opens in new tab)</span>
+          </a>
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/stadium-sound" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; Stadium Sound (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="tool-card tool-card--media">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-media"/></svg>
+          <span class="tool-card__badge">Media &amp; Web</span>
+        </div>
+        <h3 class="tool-card__title">TagMyPhoto</h3>
+        <p class="tool-card__desc">Photo management platform for sports organizations: automated tagging and crediting, photographer uploads, staff tagging using team rosters, and IPTC/XMP metadata embedding.</p>
+        <p class="tool-card__note">
+          Related earlier project:
+          <a href="https://github.com/chrissabato/photo-id" target="_blank" rel="noopener">photo-id &rarr;</a>
+        </p>
+      </article>
+
+      <article class="tool-card tool-card--media">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-media"/></svg>
+          <span class="tool-card__badge">Media &amp; Web</span>
+        </div>
+        <h3 class="tool-card__title">College Athletics Website Directory</h3>
+        <p class="tool-card__desc">Searchable directory of 1,359 college athletics websites across NCAA Division I, II, III, and NAIA, filterable by state, division, or conference. A Chrome extension is also available.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--primary" href="https://directory.chrissabato.com" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-external"/></svg> Live Site
+            <span class="visually-hidden"> &ndash; College Athletics Website Directory (opens in new tab)</span>
+          </a>
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/college-athletics-directory" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; College Athletics Website Directory (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="personal-projects" aria-labelledby="personal-projects-heading" class="category-section">
+    <div class="category-header">
+      <svg class="category-header__icon icon--personal" aria-hidden="true"><use href="#icon-personal"/></svg>
+      <div>
+        <h2 id="personal-projects-heading">Personal Projects</h2>
+        <p class="category-header__desc">A couple of things built for the house rather than the broadcast booth.</p>
+      </div>
+    </div>
+    <div class="tool-grid">
+
+      <article class="tool-card tool-card--personal">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-personal"/></svg>
+          <span class="tool-card__badge">Personal Project</span>
+        </div>
+        <h3 class="tool-card__title">recteq Dashboard</h3>
+        <p class="tool-card__desc">Self-hosted web dashboard for a recteq pellet smoker, connecting directly over the local Tuya protocol with no cloud dependency. Shows live grill, target, and probe temperatures, a 6-hour history chart, and connection status in a dark-themed UI.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/recteq-dashboard" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; recteq Dashboard (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="tool-card tool-card--personal">
+        <div class="tool-card__top">
+          <svg class="tool-card__icon" aria-hidden="true"><use href="#icon-personal"/></svg>
+          <span class="tool-card__badge">Personal Project</span>
+        </div>
+        <h3 class="tool-card__title">Vevor Weather</h3>
+        <p class="tool-card__desc">PHP dashboard for a Vevor personal weather station, pulling current conditions &mdash; temperature, wind, humidity, pressure, precipitation, UV, and solar radiation &mdash; from the Weather Underground PWS API, with caching and historical data.</p>
+        <div class="tool-card__actions">
+          <a class="btn btn--secondary" href="https://github.com/chrissabato/vevor-weather" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#icon-github"/></svg> GitHub
+            <span class="visually-hidden"> &ndash; Vevor Weather (opens in new tab)</span>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p class="site-footer__name">Chris Sabato</p>
+    <nav class="site-footer__links" aria-label="Footer">
+      <a href="https://chrissabato.com" target="_blank" rel="noopener">chrissabato.com</a>
+      <a href="https://github.com/chrissabato" target="_blank" rel="noopener">GitHub</a>
+      <a href="#top">Back to top</a>
+    </nav>
+    <p class="site-footer__copyright">&copy; <span id="year"></span> Chris Sabato</p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
